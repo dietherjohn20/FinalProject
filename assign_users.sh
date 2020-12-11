@@ -1,8 +1,8 @@
 #!/bin/bash
-for m in {1..5}
+for m in $(GroupNames)
 do 
-	for n in $(cat team$m); do usermod -a -G team$m $n
-		printf "\n $n assigned to team$m"; done
+	for n in $(cat $m); do usermod -a -G $m $n
+		printf "\n $n assigned to $m"; done
 	echo ""
 done
-cat /etc/group
+tail -n $(wc -l GroupNames | awk '{print $1}') /etc/group
