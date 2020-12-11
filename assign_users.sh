@@ -1,5 +1,5 @@
 #!/bin/bash
-for m in $(GroupNames)
+for m in $(cat GroupNames)
 do 
 	for n in $(cat $m); do usermod -a -G $m $n
 		printf "\n $n assigned to $m"; done
